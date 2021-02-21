@@ -3,15 +3,14 @@ using Verse;
 
 namespace GrowingZonePriorities
 {
-	[StaticConstructorOnStartup]
-	class HarmonyPatches : Mod
-	{
-
+    [StaticConstructorOnStartup]
+    internal class HarmonyPatches : Mod
+    {
         public HarmonyPatches(ModContentPack content) : base(content)
         {
             var harmony = new Harmony("Ilyaki.GrowingZonePriorities");
             harmony.PatchAll();
-			Log.Message("Growing Zone Priorities loaded");
+            Log.Message("Growing Zone Priorities loaded");
         }
     }
 }
