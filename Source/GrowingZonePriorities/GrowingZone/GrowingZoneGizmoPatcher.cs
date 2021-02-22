@@ -11,13 +11,11 @@ namespace GrowingZonePriorities
     {
         public static void Postfix(ref IEnumerable<Gizmo> __result, Zone_Growing __instance)
         {
-            var list = __result.ToList();
-
             var priority = PriorityTracker.growingZonePriorities.TryGetValue(__instance, out var intp)
                 ? (Priority) intp.Int
                 : Priority.Normal;
 
-            list.Add(new Command_GrowingPriority((int) priority)
+            __result = __result.Append(new Command_GrowingPriority((int) priority)
             {
                 defaultLabel = $"Priority {priority}",
                 defaultDesc = $"Set this growing zone's priority. Current priority = {priority}",
@@ -35,8 +33,6 @@ namespace GrowingZonePriorities
                     }
                 }
             });
-
-            __result = list;
         }
     }
 }
