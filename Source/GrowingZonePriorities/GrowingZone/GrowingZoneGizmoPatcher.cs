@@ -15,24 +15,7 @@ namespace GrowingZonePriorities
                 ? (Priority) intp.Int
                 : Priority.Normal;
 
-            __result = __result.Append(new Command_GrowingPriority((int) priority)
-            {
-                defaultLabel = $"Priority {priority}",
-                defaultDesc = $"Set this growing zone's priority. Current priority = {priority}",
-                icon = TexCommand.ForbidOff,
-                onChanged = x =>
-                {
-                    var p = PriorityTracker.growingZonePriorities;
-                    if (p.ContainsKey(__instance))
-                    {
-                        p[__instance].Int = x;
-                    }
-                    else
-                    {
-                        p[__instance] = new PriorityIntHolder(x);
-                    }
-                }
-            });
+            __result = __result.Append(new Command_GrowingPriority(priority));
         }
     }
 }
