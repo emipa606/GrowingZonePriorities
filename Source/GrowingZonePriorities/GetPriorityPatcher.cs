@@ -54,8 +54,7 @@ namespace GrowingZonePriorities
             {
                 foreach (var plantGrower in getPlantGrowers(pawn))
                 {
-                    var cri = plantGrower.OccupiedRect().GetIterator();
-                    while (!cri.Done())
+                    foreach (var unused in plantGrower.OccupiedRect())
                     {
                         var priority =
                             PriorityTracker.plantBuildingPriorities.TryGetValue((Building_PlantGrower) plantGrower,
@@ -64,8 +63,6 @@ namespace GrowingZonePriorities
                                 : Priority.Normal;
 
                         __result = (float) priority;
-
-                        cri.MoveNext();
                     }
                 }
             }
