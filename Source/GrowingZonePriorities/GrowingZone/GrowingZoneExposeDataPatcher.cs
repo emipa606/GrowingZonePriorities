@@ -2,21 +2,20 @@
 using RimWorld;
 using Verse;
 
-namespace GrowingZonePriorities
+namespace GrowingZonePriorities;
+
+[HarmonyPatch(typeof(Zone_Growing), "ExposeData", null)]
+public static class GrowingZoneExposeDataPatcher
 {
-    [HarmonyPatch(typeof(Zone_Growing), "ExposeData", null)]
-    public static class GrowingZoneExposeDataPatcher
+    public static void Postfix(Zone_Growing __instance)
     {
-        public static void Postfix(Zone_Growing __instance)
+        if (!PriorityTracker.growingZonePriorities.ContainsKey(__instance))
         {
-            if (!PriorityTracker.growingZonePriorities.ContainsKey(__instance))
-            {
-                PriorityTracker.growingZonePriorities[__instance] = new PriorityIntHolder((int) Priority.Normal);
-            }
-
-
-            Scribe_Values.Look(ref PriorityTracker.growingZonePriorities[__instance].Int, "growingPriority",
-                (int) Priority.Normal);
+            PriorityTracker.growingZonePriorities[__instance] = new PriorityIntHolder((int)Priority.Normal);
         }
+
+
+        Scribe_Values.Look(ref PriorityTracker.growingZonePriorities[__instance].Int, "growingPriority",
+            (int)Priority.Normal);
     }
 }

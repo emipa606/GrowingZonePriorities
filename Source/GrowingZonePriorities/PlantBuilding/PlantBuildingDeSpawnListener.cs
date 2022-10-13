@@ -1,14 +1,13 @@
 ﻿using HarmonyLib;
 using RimWorld;
 
-namespace GrowingZonePriorities.PlantBuilding
+namespace GrowingZonePriorities.PlantBuilding;
+
+[HarmonyPatch(typeof(Building_PlantGrower), "DeSpawn", null)]
+public static class PlantBuildingDeSpawnListener
 {
-    [HarmonyPatch(typeof(Building_PlantGrower), "DeSpawn", null)]
-    public static class PlantBuildingDeSpawnListener
+    public static void Postfix(Building_PlantGrower __instance)
     {
-        public static void Postfix(Building_PlantGrower __instance)
-        {
-            PriorityTracker.plantBuildingPriorities.Remove(__instance);
-        }
+        PriorityTracker.plantBuildingPriorities.Remove(__instance);
     }
 }
