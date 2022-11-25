@@ -1,5 +1,8 @@
 # Changelog for GrowingZonePriorities
 
+1.4.2 - Updated the graphics for selecting prio, thanks Qd0t!
+
+
 1.4.1 - Mod updated for 1.4 and passed autotests
 
 
