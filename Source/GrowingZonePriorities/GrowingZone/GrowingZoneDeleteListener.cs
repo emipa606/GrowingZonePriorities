@@ -4,7 +4,7 @@ using Verse;
 
 namespace GrowingZonePriorities;
 
-[HarmonyPatch(typeof(Zone), "Deregister", null)]
+[HarmonyPatch(typeof(Zone), nameof(Zone.Deregister), null)]
 public static class GrowingZoneDeleteListener
 {
     public static void Postfix(Zone __instance)

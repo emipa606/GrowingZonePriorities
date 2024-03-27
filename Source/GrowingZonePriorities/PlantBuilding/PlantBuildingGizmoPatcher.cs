@@ -6,7 +6,7 @@ using Verse;
 
 namespace GrowingZonePriorities;
 
-[HarmonyPatch(typeof(Building_PlantGrower), "GetGizmos", null)]
+[HarmonyPatch(typeof(Building_PlantGrower), nameof(Building_PlantGrower.GetGizmos), null)]
 public static class PlantBuildingGizmoPatcher
 {
     public static void Postfix(ref IEnumerable<Gizmo> __result, Building_PlantGrower __instance)

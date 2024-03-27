@@ -1,11 +1,6 @@
 ﻿namespace GrowingZonePriorities;
 
-internal class PriorityIntHolder
+internal class PriorityIntHolder(int Int)
 {
-    public int Int;
-
-    public PriorityIntHolder(int Int)
-    {
-        this.Int = Int;
-    }
+    public int Int = Int;
 }

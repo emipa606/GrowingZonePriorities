@@ -4,7 +4,7 @@ using Verse;
 
 namespace GrowingZonePriorities;
 
-[HarmonyPatch(typeof(Building_PlantGrower), "ExposeData", null)]
+[HarmonyPatch(typeof(Building_PlantGrower), nameof(Building_PlantGrower.ExposeData), null)]
 public static class PlantBuildingExposeDataPatcher
 {
     public static void Postfix(Building_PlantGrower __instance)

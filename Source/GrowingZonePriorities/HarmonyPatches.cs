@@ -1,15 +1,15 @@
-﻿using HarmonyLib;
+﻿using System.Reflection;
+using HarmonyLib;
 using Verse;
 
 namespace GrowingZonePriorities;
 
 [StaticConstructorOnStartup]
-internal class HarmonyPatches : Mod
+public static class HarmonyPatches
 {
-    public HarmonyPatches(ModContentPack content) : base(content)
+    static HarmonyPatches()
     {
-        var harmony = new Harmony("Ilyaki.GrowingZonePriorities");
-        harmony.PatchAll();
+        new Harmony("Ilyaki.GrowingZonePriorities").PatchAll(Assembly.GetExecutingAssembly());
         Log.Message("Growing Zone Priorities loaded");
     }
 }

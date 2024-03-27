@@ -6,7 +6,7 @@ namespace GrowingZonePriorities;
 [StaticConstructorOnStartup]
 public static class PriorityTexLib
 {
-    public static Texture2D[] priorityTexs =
+    public static readonly Texture2D[] priorityTexs =
     {
         ContentFinder<Texture2D>.Get("UI/Commands/PriorityLow"),
         ContentFinder<Texture2D>.Get("UI/Commands/PriorityNormal"),

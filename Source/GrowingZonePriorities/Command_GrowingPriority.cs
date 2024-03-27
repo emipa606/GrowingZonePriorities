@@ -99,9 +99,9 @@ internal class Command_GrowingPriority : Command
             {
                 foreach (var selectedPlantGrower in selectedPlantGrowers)
                 {
-                    if (plantBuildingPriorities.ContainsKey(selectedPlantGrower))
+                    if (plantBuildingPriorities.TryGetValue(selectedPlantGrower, out var priority))
                     {
-                        plantBuildingPriorities[selectedPlantGrower].Int = i;
+                        priority.Int = i;
                     }
                     else
                     {
@@ -167,9 +167,9 @@ internal class Command_GrowingPriority : Command
         {
             foreach (var selectedGrowingZone in selectedGrowingZones)
             {
-                if (growingZonePriorities.ContainsKey(selectedGrowingZone))
+                if (growingZonePriorities.TryGetValue(selectedGrowingZone, out var priority))
                 {
-                    growingZonePriorities[selectedGrowingZone].Int = i;
+                    priority.Int = i;
                 }
                 else
                 {
@@ -198,7 +198,7 @@ internal class Command_GrowingPriority : Command
         var foundValue = -2;
         foreach (var obj in Find.Selector.SelectedObjects)
         {
-            if (obj is Zone_Growing zone && growingZonePriorities.ContainsKey(zone))
+            if (obj is Zone_Growing zone && growingZonePriorities.TryGetValue(zone, out var priority))
             {
                 if (foundValue != -2)
                 {
@@ -206,11 +206,12 @@ internal class Command_GrowingPriority : Command
                     break;
                 }
 
-                foundValue = growingZonePriorities[zone].Int;
+                foundValue = priority.Int;
             }
 
             // ReSharper disable once InvertIf, Nicer
-            if (obj is Building_PlantGrower building && plantBuildingPriorities.ContainsKey(building))
+            if (obj is Building_PlantGrower building &&
+                plantBuildingPriorities.TryGetValue(building, out var buildingPriority))
             {
                 if (foundValue != -2)
                 {
@@ -218,7 +219,7 @@ internal class Command_GrowingPriority : Command
                     break;
                 }
 
-                foundValue = plantBuildingPriorities[building].Int;
+                foundValue = buildingPriority.Int;
             }
         }
 
@@ -285,36 +286,40 @@ internal class Command_GrowingPriority : Command
             //onChanged?.Invoke(currentValue);
         }
 
+        return;
+
         void DrawGZPFloatMenu()
         {
-            var options = new List<FloatMenuOption>();
-            //for (int i = 0; i < priorityNames.Length; i++)
-            //{
-            options.Add(new FloatMenuOption(priorityNames[0], () =>
+            var options = new List<FloatMenuOption>
             {
-                currentValue = 1;
-                ApplyGZPSettings();
-            }));
-            options.Add(new FloatMenuOption(priorityNames[1], () =>
-            {
-                currentValue = 2;
-                ApplyGZPSettings();
-            }));
-            options.Add(new FloatMenuOption(priorityNames[2], () =>
-            {
-                currentValue = 3;
-                ApplyGZPSettings();
-            }));
-            options.Add(new FloatMenuOption(priorityNames[3], () =>
-            {
-                currentValue = 4;
-                ApplyGZPSettings();
-            }));
-            options.Add(new FloatMenuOption(priorityNames[4], () =>
-            {
-                currentValue = 5;
-                ApplyGZPSettings();
-            }));
+                //for (int i = 0; i < priorityNames.Length; i++)
+                //{
+                new FloatMenuOption(priorityNames[0], () =>
+                {
+                    currentValue = 1;
+                    ApplyGZPSettings();
+                }),
+                new FloatMenuOption(priorityNames[1], () =>
+                {
+                    currentValue = 2;
+                    ApplyGZPSettings();
+                }),
+                new FloatMenuOption(priorityNames[2], () =>
+                {
+                    currentValue = 3;
+                    ApplyGZPSettings();
+                }),
+                new FloatMenuOption(priorityNames[3], () =>
+                {
+                    currentValue = 4;
+                    ApplyGZPSettings();
+                }),
+                new FloatMenuOption(priorityNames[4], () =>
+                {
+                    currentValue = 5;
+                    ApplyGZPSettings();
+                })
+            };
             //}
 
             Find.WindowStack.Add(new FloatMenu(options));
@@ -330,7 +335,7 @@ internal class Command_GrowingPriority : Command
 
             foreach (var gizmo in groupedWithSelf)
             {
-                if (gizmo != null && gizmo != this && !gizmo.disabled && gizmo.InheritInteractionsFrom(this))
+                if (gizmo != null && gizmo != this && !gizmo.Disabled && gizmo.InheritInteractionsFrom(this))
                 {
                     gizmo.ProcessInput(ev);
                 }
@@ -352,7 +357,7 @@ internal class Command_GrowingPriority : Command
 
     public override bool InheritInteractionsFrom(Gizmo other)
     {
-        if (!(other is Command_GrowingPriority otherC))
+        if (other is not Command_GrowingPriority otherC)
         {
             return false;
         }
