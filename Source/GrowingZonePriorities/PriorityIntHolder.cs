@@ -1,6 +1,6 @@
 ﻿namespace GrowingZonePriorities;
 
-internal class PriorityIntHolder(int Int)
+internal class PriorityIntHolder(int priorityInt)
 {
-    public int Int = Int;
+    public int Int = priorityInt;
 }

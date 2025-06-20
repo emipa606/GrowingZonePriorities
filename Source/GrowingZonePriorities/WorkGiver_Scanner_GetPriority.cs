@@ -6,8 +6,8 @@ using Verse;
 
 namespace GrowingZonePriorities;
 
-[HarmonyPatch(typeof(WorkGiver_Scanner), "GetPriority", typeof(Pawn), typeof(TargetInfo))]
-public static class GetPriorityPatcher
+[HarmonyPatch(typeof(WorkGiver_Scanner), nameof(WorkGiver_Scanner.GetPriority), typeof(Pawn), typeof(TargetInfo))]
+public static class WorkGiver_Scanner_GetPriority
 {
     private static List<Building> plantGrowers;
     private static int lastUpdateTick;

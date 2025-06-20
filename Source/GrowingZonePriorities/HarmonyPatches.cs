@@ -10,6 +10,5 @@ public static class HarmonyPatches
     static HarmonyPatches()
     {
         new Harmony("Ilyaki.GrowingZonePriorities").PatchAll(Assembly.GetExecutingAssembly());
-        Log.Message("Growing Zone Priorities loaded");
     }
 }

@@ -7,7 +7,7 @@ using Verse;
 namespace GrowingZonePriorities;
 
 [HarmonyPatch(typeof(Zone_Growing), nameof(Zone_Growing.GetGizmos), null)]
-public static class GrowingZoneGizmoPatcher
+public static class Zone_Growing_GetGizmos
 {
     public static void Postfix(ref IEnumerable<Gizmo> __result, Zone_Growing __instance)
     {

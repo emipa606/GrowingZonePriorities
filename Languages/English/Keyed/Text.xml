@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <GZP.Priority>Priority {0}</GZP.Priority>
+  <GZP.AllBuildings>Set all buildings priorities. Current priority = {0}</GZP.AllBuildings>
+  <GZP.ThisBuilding>Set this buildings priorities. Current priority = {0}</GZP.ThisBuilding>
+  <GZP.AllZones>Set all growing zone's priorities. Current priority = {0}</GZP.AllZones>
+  <GZP.ThisZone>Set this growing zone's priority. Current priority = {0}</GZP.ThisZone>
+  <GZP.SetPriorities>Set Priorities</GZP.SetPriorities>
+  <GZP.SetPrioritiesTT>Set priorities for these buildings.</GZP.SetPrioritiesTT>
+  <GZP.SetPrioritiesZonesTT>Set priorities for these zones.</GZP.SetPrioritiesZonesTT>
+  <GZP.MixedPriorities>Mixed priorities</GZP.MixedPriorities>
+</LanguageData>

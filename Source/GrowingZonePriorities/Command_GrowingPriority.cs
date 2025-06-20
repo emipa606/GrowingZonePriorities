@@ -76,23 +76,22 @@ internal class Command_GrowingPriority : Command
 
                 if (isTheSame)
                 {
-                    defaultLabel = $"Priority {currentValue}";
-                    defaultDesc = $"Set all buildings priorities. Current priority = {currentValue}";
-                    icon = PriorityTexLib.priorityTexs[(int)currentValue - 1];
+                    defaultLabel = "GZP.Priority".Translate(currentValue.ToString());
+                    defaultDesc = "GZP.AllBuildings".Translate(currentValue.ToString());
+                    icon = PriorityTexLib.PriorityTextures[(int)currentValue - 1];
                 }
                 else
                 {
-                    defaultLabel = "Set priorities";
-                    defaultDesc = "Set priorities for these buildings.";
-                    icon = PriorityTexLib.priorityTexs[5];
+                    defaultLabel = "GZP.SetPriorities".Translate();
+                    defaultDesc = "GZP.SetPrioritiesTT".Translate();
+                    icon = PriorityTexLib.PriorityTextures[5];
                 }
             }
             else
             {
-                defaultLabel = $"Priority {currentValue}";
-                defaultDesc = $"Set this buildings priority. Current priority = {currentValue}";
-                icon = PriorityTexLib.priorityTexs[(int)currentValue - 1];
-                //activateSound = SoundDef.Named("Click");
+                defaultLabel = "GZP.Priority".Translate(currentValue.ToString());
+                defaultDesc = "GZP.ThisBuilding".Translate(currentValue.ToString());
+                icon = PriorityTexLib.PriorityTextures[(int)currentValue - 1];
             }
 
             onChanged = i =>
@@ -144,22 +143,22 @@ internal class Command_GrowingPriority : Command
 
                 if (isTheSame)
                 {
-                    defaultLabel = $"Priority {currentValue}";
-                    defaultDesc = $"Set all growing zone's priorities. Current priority = {currentValue}";
-                    icon = PriorityTexLib.priorityTexs[(int)currentValue - 1];
+                    defaultLabel = "GZP.Priority".Translate(currentValue.ToString());
+                    defaultDesc = "GZP.AllZones".Translate(currentValue.ToString());
+                    icon = PriorityTexLib.PriorityTextures[(int)currentValue - 1];
                 }
                 else
                 {
-                    defaultLabel = "Mixed priorities";
-                    defaultDesc = "Set priorities for these zones.";
-                    icon = PriorityTexLib.priorityTexs[5];
+                    defaultLabel = "GZP.MixedPriorities".Translate();
+                    defaultDesc = "GZP.SetPrioritiesZonesTT".Translate();
+                    icon = PriorityTexLib.PriorityTextures[5];
                 }
 
                 break;
             default:
-                defaultLabel = $"Priority {currentValue}";
-                defaultDesc = $"Set this growing zone's priority. Current priority = {currentValue}";
-                icon = PriorityTexLib.priorityTexs[(int)currentValue - 1];
+                defaultLabel = "GZP.Priority".Translate(currentValue.ToString());
+                defaultDesc = "GZP.ThisZone".Translate(currentValue.ToString());
+                icon = PriorityTexLib.PriorityTextures[(int)currentValue - 1];
                 break;
         }
 
@@ -182,12 +181,6 @@ internal class Command_GrowingPriority : Command
     public override void ProcessInput(Event ev)
     {
         base.ProcessInput(ev);
-
-        //string textGetter(int x)
-        //{
-        //    return x >= 1 && x <= priorityNames.Length ? priorityNames[x - 1] : "???";
-        //}
-
 
         var groups = (List<List<Gizmo>>)typeof(GizmoGridDrawer)
             .GetField("gizmoGroups", BindingFlags.Static | BindingFlags.NonPublic)
@@ -230,61 +223,15 @@ internal class Command_GrowingPriority : Command
 
         if (Find.Selector.SelectedObjects.Count > 1)
         {
-            //if (Event.current.button == 1)
-            //{
             currentValue = 2;
-            ApplyGZPSettings();
-            DrawGZPFloatMenu();
-            //}
-            //else
-            //{
-            //    currentValue = 2;
-            //    ApplyGZPSettings();
-            //}
-            //var window = new Dialog_Slider(textGetter, (int)Priority.Low, (int)Priority.Critical, delegate (int value)
-            //{
-            //    currentValue = value;
-            //    onChanged?.Invoke(value);
-
-            //    if (groupedWithSelf == null)
-            //    {
-            //        return;
-            //    }
-
-            //    foreach (var gizmo in groupedWithSelf)
-            //    {
-            //        if (gizmo != null && gizmo != this && !gizmo.disabled && gizmo.InheritInteractionsFrom(this))
-            //        {
-            //            gizmo.ProcessInput(ev);
-            //        }
-            //    }
-            //}, 2);
-
-            //Find.WindowStack.Add(window);
+            applyGzpSettings();
         }
         else
         {
             currentValue = foundValue;
-
-            DrawGZPFloatMenu();
-            //if (Event.current.button == 1)
-            //{
-            //    if (currentValue > 1)
-            //    {
-            //        currentValue--;
-            //    }
-            //}
-
-            //else
-            //{
-            //    if (currentValue < 5)
-            //    {
-            //        currentValue++;
-            //    }
-            //}
-
-            //onChanged?.Invoke(currentValue);
         }
+
+        DrawGZPFloatMenu();
 
         return;
 
@@ -292,40 +239,37 @@ internal class Command_GrowingPriority : Command
         {
             var options = new List<FloatMenuOption>
             {
-                //for (int i = 0; i < priorityNames.Length; i++)
-                //{
-                new FloatMenuOption(priorityNames[0], () =>
+                new(priorityNames[0], () =>
                 {
                     currentValue = 1;
-                    ApplyGZPSettings();
+                    applyGzpSettings();
                 }),
-                new FloatMenuOption(priorityNames[1], () =>
+                new(priorityNames[1], () =>
                 {
                     currentValue = 2;
-                    ApplyGZPSettings();
+                    applyGzpSettings();
                 }),
-                new FloatMenuOption(priorityNames[2], () =>
+                new(priorityNames[2], () =>
                 {
                     currentValue = 3;
-                    ApplyGZPSettings();
+                    applyGzpSettings();
                 }),
-                new FloatMenuOption(priorityNames[3], () =>
+                new(priorityNames[3], () =>
                 {
                     currentValue = 4;
-                    ApplyGZPSettings();
+                    applyGzpSettings();
                 }),
-                new FloatMenuOption(priorityNames[4], () =>
+                new(priorityNames[4], () =>
                 {
                     currentValue = 5;
-                    ApplyGZPSettings();
+                    applyGzpSettings();
                 })
             };
-            //}
 
             Find.WindowStack.Add(new FloatMenu(options));
         }
 
-        void ApplyGZPSettings()
+        void applyGzpSettings()
         {
             onChanged?.Invoke(currentValue);
             if (groupedWithSelf == null)
@@ -341,18 +285,6 @@ internal class Command_GrowingPriority : Command
                 }
             }
         }
-        //if (groupedWithSelf == null)
-        //{
-        //    return;
-        //}
-
-        //foreach (var gizmo in groupedWithSelf)
-        //{
-        //    if (gizmo != null && gizmo != this && !gizmo.disabled && gizmo.InheritInteractionsFrom(this))
-        //    {
-        //        gizmo.ProcessInput(ev);
-        //    }
-        //}
     }
 
     public override bool InheritInteractionsFrom(Gizmo other)
