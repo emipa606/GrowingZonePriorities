@@ -3,7 +3,13 @@
   "CanAdd": "0",
   "CanRemove": "0",
   "PreviewVersion": "1.6",
-  "LastXmlCleaning": "2025-06-20T18:31:42.0114791+02:00",
+  "LastXmlCleaning": "2025-11-07T22:07:58.9059602+01:00",
   "SocialImageSet": true,
-  "SearchTags": " plant management"
+  "SearchTags": " plant management",
+  "Patches": false,
+  "Defs": false,
+  "Assemblies": true,
+  "LinesOfCode": 21557,
+  "LinesOfXML": 0,
+  "CodeBaseSize": 67
 }

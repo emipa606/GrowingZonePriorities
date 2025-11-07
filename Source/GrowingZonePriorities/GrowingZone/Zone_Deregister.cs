@@ -9,7 +9,7 @@ public static class Zone_Deregister
 {
     public static void Postfix(Zone __instance)
     {
-        if (__instance is Zone_Growing growingZone)
+        if (__instance is IPlantToGrowSettable growingZone)
         {
             PriorityTracker.growingZonePriorities.Remove(growingZone);
         }

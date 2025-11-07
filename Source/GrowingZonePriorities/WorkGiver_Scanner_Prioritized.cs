@@ -8,7 +8,7 @@ public static class WorkGiver_Scanner_Prioritized
 {
     public static bool Prefix(ref bool __result, ref WorkGiver_Scanner __instance)
     {
-        if (__instance is not WorkGiver_Grower)
+        if (!HarmonyPatches.IsPlantZoneScanner(__instance.GetType()))
         {
             return true;
         }

@@ -24,7 +24,7 @@ internal class Command_GrowingPriority : Command
     {
         var growingZonePriorities = PriorityTracker.growingZonePriorities;
         var plantBuildingPriorities = PriorityTracker.plantBuildingPriorities;
-        var selectedGrowingZones = new List<Zone_Growing>();
+        var selectedGrowingZones = new List<IPlantToGrowSettable>();
         var selectedPlantGrowers = new List<Building_PlantGrower>();
         activateSound = SoundDef.Named("Click");
 
@@ -32,9 +32,9 @@ internal class Command_GrowingPriority : Command
         {
             switch (obj)
             {
-                case Zone_Growing zone:
+                case Zone and IPlantToGrowSettable plantZone:
                 {
-                    selectedGrowingZones.Add(zone);
+                    selectedGrowingZones.Add(plantZone);
                     break;
                 }
                 case Building_PlantGrower building:

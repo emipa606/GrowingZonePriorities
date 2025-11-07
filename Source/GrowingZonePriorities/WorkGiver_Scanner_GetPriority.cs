@@ -35,36 +35,37 @@ public static class WorkGiver_Scanner_GetPriority
 
     public static void Postfix(Pawn pawn, TargetInfo t, ref float __result, WorkGiver_Scanner __instance)
     {
-        if (__instance is not WorkGiver_Grower)
+        if (!HarmonyPatches.IsPlantZoneScanner(__instance.GetType()))
         {
             return;
         }
 
+
         var cell = t.Cell;
-        var zone = (Zone_Growing)pawn.Map.zoneManager.AllZones.FirstOrFallback(x =>
-            x is Zone_Growing growZone && growZone.cells.Contains(cell));
+        var zone = pawn.Map.zoneManager.AllZones.FirstOrFallback(x =>
+            x is IPlantToGrowSettable && x.cells.Contains(cell));
+        var growZone = (IPlantToGrowSettable)zone;
 
         if (zone != null)
         {
-            __result = PriorityTracker.growingZonePriorities.TryGetValue(zone, out var intp)
+            __result = PriorityTracker.growingZonePriorities.TryGetValue(growZone, out var intp)
                 ? intp.Int
                 : (int)Priority.Normal;
+            return;
         }
-        else
-        {
-            foreach (var plantGrower in getPlantGrowers(pawn))
-            {
-                foreach (var unused in plantGrower.OccupiedRect())
-                {
-                    var priority =
-                        PriorityTracker.plantBuildingPriorities.TryGetValue((Building_PlantGrower)plantGrower,
-                            out var intp)
-                            ? (Priority)intp.Int
-                            : Priority.Normal;
 
-                    __result = (float)priority;
-                }
+        foreach (var plantGrower in getPlantGrowers(pawn))
+        {
+            if (!plantGrower.OccupiedRect().Contains(cell))
+            {
+                continue;
             }
+
+            __result = PriorityTracker.plantBuildingPriorities.TryGetValue((Building_PlantGrower)plantGrower,
+                out var intp)
+                ? intp.Int
+                : (int)Priority.Normal;
+            return;
         }
     }
 }

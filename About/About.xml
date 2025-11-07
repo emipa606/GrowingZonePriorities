@@ -24,26 +24,26 @@
   <loadAfter>
     <li>brrainz.harmony</li>
   </loadAfter>
-  <description>[img]https://i.imgur.com/buuPQel.png[/img]
+  <description>[img]https://i.postimg.cc/1X4HT06h/Info.png[/img]
 Update of Ilyakis mod
 https://steamcommunity.com/sharedfiles/filedetails/?id=1670650826
 
 - Added the possibility to set priority for multiple zones/pods at the same time
 
-[img]https://i.imgur.com/pufA0kM.png[/img]
+[img]https://i.postimg.cc/8csH3dWV/Notice.png[/img]
 
 [table]
 	[tr]
-		[td][url=https://dsc.gg/mlie][img]https://i.imgur.com/zdzzBrc.png[/img][/url][/td]
-		[td][url=https://github.com/emipa606/GrowingZonePriorities][img]https://i.imgur.com/kTkpTOE.png[/img][/url][/td]
+		[td][url=https://discord.gg/h5TY6DA][img]https://i.postimg.cc/T1h9SjbF/Discord.png[/img][/url][/td]
+		[td][url=https://github.com/emipa606/GrowingZonePriorities][img]https://i.postimg.cc/fykKF7X4/Github.png[/img][/url][/td]
     [/tr]
     [tr]
-        [td][img]https://i.imgur.com/WjDSfUn.png[/img][/td]
-        [td][img]https://i.imgur.com/h5VwTNL.png[/img][/td]
+        [td][img]https://i.postimg.cc/MHXD40RW/Safe-To-Add.png[/img][/td]
+        [td][img]https://i.postimg.cc/sx1c8PSf/Safe-To-Remove.png[/img][/td]
     [/tr]
 [/table]
 	
-[img]https://i.imgur.com/Z4GOv8H.png[/img]
+[img]https://i.postimg.cc/hvhrw8xB/Original-Description.png[/img]
 
 Allows you to set priorities for which growing zone to sow and harvest first. Also works on plant pots, hydroponics, etc.
 
@@ -53,11 +53,11 @@ v1.1.0.0 Changelog:
 - Fixed bug where colonists would plant the wrong crop. (And probably some other bugs too).
 - Simplified code so there is less performance impact and extremely unlikely chance of a mod incompatibility.
 
-[img]https://i.imgur.com/PwoNOj4.png[/img]
+[img]https://i.postimg.cc/x8qR7GH9/Reporting-Issues.png[/img]
 [list]
 [*] See if the the error persists if you just have this mod and its requirements active.
 [*] If not, try adding your other mods until it happens again.
-[*] Post your error-log using [url=https://steamcommunity.com/workshop/filedetails/?id=818773962]HugsLib[/url] or the standalone [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2873415404]Uploader[/url] and command Ctrl+F12
+[*] Always post your log using the [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2873415404]Log Uploader[/url]
 [*] For best support, please use the Discord-channel for error-reporting.
 [*] Do not report errors by making a discussion-thread, I get no notification of that.
 [*] If you have the solution for a problem, please post it to the GitHub repository.
@@ -65,5 +65,5 @@ v1.1.0.0 Changelog:
 [/list] 
 
 [url=https://steamcommunity.com/sharedfiles/filedetails/changelog/2026571920][img]https://img.shields.io/github/v/release/emipa606/GrowingZonePriorities?label=latest%20version&amp;style=plastic&amp;color=9f1111&amp;labelColor=black[/img][/url] | tags:  plant management</description>
-  <modVersion IgnoreIfNoMatchingField="True">1.6.0</modVersion>
+  <modVersion IgnoreIfNoMatchingField="True">1.6.1</modVersion>
 </ModMetaData>

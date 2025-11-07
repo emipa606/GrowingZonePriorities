@@ -1,13 +1,33 @@
-﻿using HarmonyLib;
+﻿using System.Collections.Generic;
+using System.Reflection;
+using HarmonyLib;
 using RimWorld;
 using Verse;
 
 namespace GrowingZonePriorities;
 
-[HarmonyPatch(typeof(Zone_Growing), nameof(Zone_Growing.ExposeData), null)]
+[HarmonyPatch]
 public static class Zone_Growing_ExposeData
 {
-    public static void Postfix(Zone_Growing __instance)
+    private static IEnumerable<MethodBase> TargetMethods()
+    {
+        // For each Zone subclass that implements IPlantToGrowSettable and has a ExposeData method, patch it.
+        foreach (var zoneType in typeof(Zone).AllSubclasses())
+        {
+            if (!typeof(IPlantToGrowSettable).IsAssignableFrom(zoneType))
+            {
+                continue;
+            }
+
+            var method = AccessTools.Method(zoneType, nameof(Zone.ExposeData));
+            if (method != null)
+            {
+                yield return method;
+            }
+        }
+    }
+
+    public static void Postfix(IPlantToGrowSettable __instance)
     {
         if (!PriorityTracker.growingZonePriorities.ContainsKey(__instance))
         {

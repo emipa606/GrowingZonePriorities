@@ -7,6 +7,6 @@
   <GZP.ThisZone>Set this growing zone's priority. Current priority = {0}</GZP.ThisZone>
   <GZP.SetPriorities>Set Priorities</GZP.SetPriorities>
   <GZP.SetPrioritiesTT>Set priorities for these buildings.</GZP.SetPrioritiesTT>
-  <GZP.SetPrioritiesZonesTT>Set priorities for these zones.</GZP.SetPrioritiesZonesTT>
+  <GZP.SetPrioritiesZonesTT>Set priorities for these zones. NOTE: If you have a modded growing zone using a custom worktype, it will use the prio only between zones of the same type.</GZP.SetPrioritiesZonesTT>
   <GZP.MixedPriorities>Mixed priorities</GZP.MixedPriorities>
 </LanguageData>
