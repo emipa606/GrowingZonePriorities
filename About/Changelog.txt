@@ -1,5 +1,8 @@
 # Changelog for GrowingZonePriorities
 
+1.6.2 - Fixed wrong author name
+
+
 1.6.1 - Now supports custom growing zones, but if they use custom workgivers, the prio will only be applied for zones of the same type
 Used DeepL to update translations for ChineseSimplified, French, German
 

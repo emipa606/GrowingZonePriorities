@@ -1,15 +1,15 @@
 # [Growing Zone Priorities (Continued)](https://steamcommunity.com/sharedfiles/filedetails/?id=2026571920)
 
-![Image](https://i.postimg.cc/1X4HT06h/Info.png)
+![Image](https://img.litet.net/logos/Info.png)
 
 Update of Ilyakis mod
 https://steamcommunity.com/sharedfiles/filedetails/?id=1670650826
 
 - Added the possibility to set priority for multiple zones/pods at the same time
 
-![Image](https://i.postimg.cc/8csH3dWV/Notice.png)
+![Image](https://img.litet.net/logos/Notice.png)
 	
-![Image](https://i.postimg.cc/hvhrw8xB/Original-Description.png)
+![Image](https://img.litet.net/logos/OriginalDescription.png)
 
 Allows you to set priorities for which growing zone to sow and harvest first. Also works on plant pots, hydroponics, etc.
 
@@ -19,7 +19,7 @@ v1.1.0.0 Changelog:
 - Fixed bug where colonists would plant the wrong crop. (And probably some other bugs too).
 - Simplified code so there is less performance impact and extremely unlikely chance of a mod incompatibility.
 
-![Image](https://i.postimg.cc/x8qR7GH9/Reporting-Issues.png)
+![Image](https://img.litet.net/logos/ReportingIssues.png)
 
 
 
@@ -33,4 +33,4 @@ v1.1.0.0 Changelog:
 
  
 
-[![Image](https://img.shields.io/github/v/release/emipa606/GrowingZonePriorities?label=latest%20version&style=plastic&color=9f1111&labelColor=black)](https://steamcommunity.com/sharedfiles/filedetails/changelog/2026571920) | tags:  plant management
+[![Image](https://img.shields.io/github/v/release/emipa606/GrowingZonePriorities?label=latest%20version&style=plastic&color=9f1111&labelColor=black)](https://steamcommunity.com/sharedfiles/filedetails/changelog/2026571920) | tags: plant management
