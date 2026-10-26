@@ -33,4 +33,4 @@ v1.1.0.0 Changelog:
 
  
 
-[![Image](https://img.shields.io/github/v/release/emipa606/GrowingZonePriorities?label=latest%20version&style=plastic&color=9f1111&labelColor=black)](https://steamcommunity.com/sharedfiles/filedetails/changelog/2026571920) | tags: plant management
+[![Image](https://img.shields.io/github/v/release/emipa606/GrowingZonePriorities?label=latest%20version&style=plastic&color=9f1111&labelColor=black)](https://steamcommunity.com/sharedfiles/filedetails/changelog/2026571920) | plant management

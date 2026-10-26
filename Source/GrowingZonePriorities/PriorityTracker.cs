@@ -3,7 +3,7 @@ using RimWorld;
 
 namespace GrowingZonePriorities;
 
-internal class PriorityTracker
+internal static class PriorityTracker
 {
     public static readonly Dictionary<IPlantToGrowSettable, PriorityIntHolder> growingZonePriorities = new();
 

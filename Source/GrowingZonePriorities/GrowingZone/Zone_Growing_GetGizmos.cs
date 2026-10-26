@@ -10,7 +10,7 @@ namespace GrowingZonePriorities;
 [HarmonyPatch]
 public static class Zone_Growing_GetGizmos
 {
-    private static IEnumerable<MethodBase> TargetMethods()
+    public static IEnumerable<MethodBase> TargetMethods()
     {
         // For each Zone subclass that implements IPlantToGrowSettable and has a GetGizmos method, patch it.
         foreach (var zoneType in typeof(Zone).AllSubclasses())

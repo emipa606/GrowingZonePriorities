@@ -185,7 +185,7 @@ internal class Command_GrowingPriority : Command
         var groups = (List<List<Gizmo>>)typeof(GizmoGridDrawer)
             .GetField("gizmoGroups", BindingFlags.Static | BindingFlags.NonPublic)
             ?.GetValue(null);
-        var groupedWithSelf = groups.FirstOrFallback(group => group.Contains(this));
+        var groupedWithSelf = groups.FirstOrFallback(group => group != null && group.Contains(this));
         var growingZonePriorities = PriorityTracker.growingZonePriorities;
         var plantBuildingPriorities = PriorityTracker.plantBuildingPriorities;
         var foundValue = -2;
